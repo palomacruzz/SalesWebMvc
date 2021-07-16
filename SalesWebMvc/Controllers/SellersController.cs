@@ -31,7 +31,7 @@ namespace SalesWebMvc.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
-        {
+         {
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
