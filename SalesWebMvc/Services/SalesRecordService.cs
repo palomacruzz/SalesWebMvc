@@ -32,7 +32,15 @@ namespace SalesWebMvc.Services
                 .OrderByDescending(x => x.Date)
                 .ToListAsync();
         }
-
+        public async Task InsertAsync(SalesRecord obj)
+        {
+            _context.Add(obj);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<List<SalesRecord>> FindAllAsync()
+        {
+            return await _context.SalesRecords.ToListAsync();
+        }
         public async Task<List<IGrouping<Department,SalesRecord>>> FindByDateGroupingAsync(DateTime? minDate, DateTime? maxDate)
         {
             var result = from obj in _context.SalesRecords select obj;
